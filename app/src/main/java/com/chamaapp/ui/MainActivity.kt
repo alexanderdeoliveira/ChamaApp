@@ -1,16 +1,16 @@
-package com.chamaapp
+package com.chamaapp.ui
 
-import android.R.attr.apiKey
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.chamaapp.R
 import com.chamaapp.databinding.ActivityMainBinding
-import com.google.android.libraries.places.api.Places
-
+import com.chamaapp.viewmodel.PlacesViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-
+    private val placesViewModel by viewModel<PlacesViewModel>()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         binding.navView.setupWithNavController(navHostFragment.navController)
-
-//        Places.initialize(applicationContext, getString(R.string.google_maps_key))
-//        val placesClient = Places.createClient(this)
 
     }
 }
